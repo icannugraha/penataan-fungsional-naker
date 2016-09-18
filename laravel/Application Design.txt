@@ -1,0 +1,55 @@
+Application Design
+Aplikasi Sederhana Penataan Fungsional Pengawas Ketenagakerjaan setelah berlakunya undang-undang no. 23 th. 2014 melalui pemutakhiran data pengawas ketenagakerjaan.
+
+Authentication:
+	1.	Admin
+		-	Create, Update, dan Delete data pengawas.
+		-	Create, Update, dan Delete data provinsi.
+		-	Create, Update, dan Delete data user.
+
+	2.	User
+		-	Melihat data pengawas berdasarkan provinsi
+
+		
+Features & Workflow:
+	A.	Melihat data pengawas berdasarkan provinsi (Admin/User).
+		Workflow:
+			1.	Admin/User login 
+			2.	Pilih provinsi 
+			3.	Melihat daftar pengawas berdasarkan provinsi yang dipilih
+
+	B.	Melihat detail data pengawas (Admin).
+		Workflow 1:
+			1.	Admin login
+			2.	Pilih provinsi
+			3.	Melihat daftar pengawas berdasarkan provinsi yang dipilih
+			4.	Pilih pengawas
+			5.	Melihat detail data pengawas
+		Workflow 2:
+			1.	Admin login
+			2.	Admin search pengawas (nama/nip/id)
+			3.	Pilih pengawas
+			4. 	Melihat detail data pengawas
+
+	C.	Create, Update, dan Delete data pengawas (Admin).
+		Workflow 1:
+			1.	Admin login
+			2.	Pilih provinsi
+			3.	Melihat daftar pengawas berdasarkan provinsi yang dipilih
+			4.	Pilih pengawas
+			5.	Melihat detail data pengawas
+			6.	Pilih option yang diinginkan
+
+		Workflow 2:
+			1.	Admin login
+			2.	Admin search pengawas (nama/nip/id)
+			3.	Pilih pengawas
+			4. 	Melihat detail data pengawas
+			5.	Pilih option yang diinginkan
+
+	D.	Search pengawas berdasarkan nama (Admin/User).
+		Workflow:
+			1.	Login
+			2.	Search pengawas (nama/nip/id)
+			3.	Melihat pengawas yang dicari
+
