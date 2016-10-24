@@ -24,7 +24,7 @@
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <ul class="dropdown-menu" style="left:15px">
+                <ul class="dropdown-menu dualcolumns" style="left:15px">
                     @if(!$provinces->isEmpty())
                         @foreach($provinces as $province)
                             <li><a href="{{ url('/provinsi') }}/{{ $province->id }}">{{ $province->name }}</a></li>
@@ -57,20 +57,20 @@
             <?php $count = $pengawas->firstItem() ?>
             <div class="panel panel-primary">
                 <div class="panel-heading"> 
-                    <strong>Daftar Pengawas Provinsi -  <em>"{{ $provinsi->name }}"</em></strong>
+                    Daftar Pengawas Provinsi -  <em>"{{ $provinsi->name }}"</em>
                 </div>
                 <div class="panel-body">
-                    Result: <strong>{{ $counter }}</strong> pengawas.
+                    Result: <strong>{{ $counter }}</strong> pengawas
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr style="white-space:nowrap;">
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Provinsi</th>
-                                <th>NIP</th>
-                                <th>Unit</th>
+                                <th class="col-xs-4">Nama</th>
+                                <th class="col-xs-3">Provinsi</th>
+                                <th class="col-xs-2">NIP</th>
+                                <th class="col-xs-3">Unit</th>
                                 <th>Detail</th>
                             </tr>
                         </thead>

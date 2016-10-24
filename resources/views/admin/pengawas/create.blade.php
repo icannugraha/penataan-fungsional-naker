@@ -14,7 +14,7 @@
     @else
 
     <h2><strong>Tambah Pengawas</strong></h2>
-    <hr>
+    <br>
     <div class="panel panel-primary">
         <div class="panel-heading">
             Pengawas Baru
@@ -193,7 +193,7 @@
                 </div>
         </div>
         <div class="panel-footer text-right">
-            <button type="submit" class="btn btn-primary">Tambah User</button>
+            <button type="submit" class="btn btn-primary">Tambah Pengawas</button>
         </div>
         </form>
     </div>

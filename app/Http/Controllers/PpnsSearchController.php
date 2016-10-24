@@ -6,23 +6,23 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Pengawas;
+use App\ppns;
 use App\Province;
 
-class SearchController extends Controller
+class PpnsSearchController extends Controller
 {
 	public function index(Request $request) {
         $provinces = Province::all()->sortBy('name');
         $search = $request->get('s');
-		$pengawas = Pengawas::where('name','like','%'.$search.'%')
+		$ppns = Ppns::where('name','like','%'.$search.'%')
                 ->orderBy('name')
                 ->paginate(15)
                 ->appends(['s' => $search]);
-        $counter = Pengawas::where('name','like','%'.$search.'%')->count();
-        return view('search')
+        $counter = Ppns::where('name','like','%'.$search.'%')->count();
+        return view('ppnssearch')
             ->with('counter', $counter)
             ->with('search', $search)
             ->with('provinces', $provinces)
-            ->with('pengawas', $pengawas);
+            ->with('ppns', $ppns);
     }
 }

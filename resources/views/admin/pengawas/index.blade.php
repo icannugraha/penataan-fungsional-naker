@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Manage Pengawas - Penataan Fungsional Pengawas Ketenagakerjaan
+    Daftar Semua Pengawas - Penataan Fungsional Pengawas Ketenagakerjaan
 @endsection
 
 @section('content')
@@ -19,11 +19,12 @@
         </div>  
         @endif
 
-        <h2><strong>Manage Pengawas</strong></h2>
+        <h2><strong>Daftar Pengawas</strong></h2>
         <br>
         <a href="{{ url('admin/pengawas/create')}}" class="btn btn-primary"><i class="fa fa-btn fa-plus"></i>Tambah Pengawas</a>
         
-        <hr>
+        <br>
+        <br>
 
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -35,10 +36,10 @@
                     <thead>
                         <tr style="white-space:nowrap;">
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Provinsi</th>
-                            <th>NIP</th>
-                            <th></th>
+                            <th class="col-xs-4">Nama</th>
+                            <th class="col-xs-4">Provinsi</th>
+                            <th class="col-xs-2">NIP</th>
+                            <th class="col-xs-1"></th>
                         </tr>
                     </thead>
 

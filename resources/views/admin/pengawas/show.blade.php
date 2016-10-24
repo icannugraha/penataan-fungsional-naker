@@ -23,21 +23,11 @@
         @endif
 
         <h2><strong>Detail Pengawas</strong></h2>
-       
-        <hr>
+        <br>
 
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <strong>{{ $pengawas->name }}</strong>
-            </div>
-
-            <div class="panel-footer text-right">
-                <form action="/admin/pengawas/{{ $pengawas->id }}" method="post" id="deleteform">
-                {{ csrf_field() }}
-                    <input type="hidden" name="_method" value="DELETE">
-                </form>
-                <a href="/admin/pengawas/{{ $pengawas->id }}/edit" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                <button class="btn btn-danger" id="delete"<i class="fa fa-trash-o"></i> Delete</button>
             </div>
 
             @if ($pengawas)

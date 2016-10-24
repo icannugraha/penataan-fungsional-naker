@@ -31,7 +31,7 @@ class AdminPengawasController extends Controller
      */
     public function create()
     {
-        $provinsi = Province::all();
+        $provinsi = Province::all()->sortBy('name');
         return view('admin.pengawas.create')
             ->with('provinsi', $provinsi);
     }
@@ -80,7 +80,9 @@ class AdminPengawasController extends Controller
             'keterangan' => $request['keterangan'],
         ]);
 
-        return redirect('admin/pengawas')
+        $url = 'search?s=' . $request['name'];
+
+        return redirect($url)
             ->with('message', 'Pengawas baru telah dibuat.');
     }
 
@@ -107,7 +109,7 @@ class AdminPengawasController extends Controller
     public function edit($id)
     {
         $pengawas = Pengawas::where('id', $id)->firstorfail();
-        $provinsi = Province::all();
+        $provinsi = Province::all()->sortBy('name');
         return view('admin.pengawas.edit')
             ->with('pengawas', $pengawas)
             ->with('provinsi', $provinsi);

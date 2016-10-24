@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Mencari 
-    @if($search) 
-        "{{ $search }}"
-    @endif
-    - Penataan Fungsional Pengawas Ketenagakerjaan
+    Daftar Semua Pengawas - Aplikasi Penataan Fungsional Pengawas Ketenagakerjaan
 @endsection
 
 @section('content')
@@ -16,12 +12,7 @@
     @if (Auth::guest())
         @include('auth.layouts.login')
     @else
-        @if(Session::has('message'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Sukses!</strong> {!! session('message') !!}
-        </div>  
-        @endif
+
         <div class="row">
             <!-- Split button -->
             <div class="btn-group col-md-3 top-buffer">
@@ -39,7 +30,9 @@
                         <li>Tidak ada provinsi.</li>
                     @endif
                 </ul>
+                <br>
             </div>
+
 
             <form method="get" class="form-horizontal col-md-9 top-buffer" action="{{ url('search') }}">
                 <div id="custom-search-input">
@@ -56,17 +49,16 @@
                 </div>
             </form>
         </div>
-        
+
         <br>
-            
-        @if(!$pengawas->isEmpty())  
-            <?php $count = $pengawas->firstItem() ?>
+                       
+        @if(!$pengawas->isEmpty())            
             <div class="panel panel-primary">
                 <div class="panel-heading"> 
-                    Mencari Pengawas -  <em>"{{ $search }}"</em>
+                    Daftar Semua Pengawas
                 </div>
                 <div class="panel-body">
-                    Result: <strong>{{ $counter }}</strong> pengawas.
+                    Result: <strong>{{ $counter }}</strong> pengawas</p>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
@@ -77,7 +69,7 @@
                                 <th class="col-xs-3">Provinsi</th>
                                 <th class="col-xs-2">NIP</th>
                                 <th class="col-xs-3">Unit</th>
-                                <th>Detail</th>
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -104,13 +96,11 @@
                         <small>{{ $pengawas->links() }}</small>
                     </div>
                 </div>
-            </div>
+        </div>
         @else
-            <div class="panel panel-warning" id="notice">
-                <div class="panel-body">
-                    <strong>Pengawas tidak ditemukan.</strong>
-                </div>
+            <div class="alert alert-warning" role="alert">
+                <strong>Error!</strong> Pengawas tidak ditemukan.
             </div>
-        @endif  
+        @endif
     @endif
 @endsection

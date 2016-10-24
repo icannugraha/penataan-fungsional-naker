@@ -12,95 +12,74 @@
     @if (Auth::guest())
         @include('auth.layouts.login')
     @else
-
-        <div class="row">
-            <!-- Split button -->
-            <div class="btn-group col-md-3 top-buffer">
-                <label type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Provinsi</label>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu" style="left:15px">
-                    @if(!$provinces->isEmpty())
-                        @foreach($provinces as $province)
-                            <li><a href="{{ url('/provinsi') }}/{{ $province->id }}">{{ $province->name }}</a></li>
-                        @endforeach
-                    @else
-                        <li>Tidak ada provinsi.</li>
-                    @endif
-                </ul>
-                <br>
-            </div>
-
-
-            <form method="get" class="form-horizontal col-md-9 top-buffer" action="{{ url('search') }}">
-                <div id="custom-search-input">
-                    <div id="custom-search-input">
-                        <div class="input-group">
-                            <input type="text" class="search-query form-control" name="s" id="s" placeholder="Cari nama pengawas..." />
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit">
-                                    <span class=" glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </form>
+    <div class="col-md-8 col-md-offset-2">
+        <div class="jumbotron">
+            <h1>Aplikasi Sederhana</h1>
+            <p>Penataan Fungsional Pengawas Ketenagakerjaan setelah berlakunya undang-undang no. 23 th. 2014 melalui pemutakhiran data pengawas ketenagakerjaan.</p>
+            <a class="btn btn-success" href="{{ url('pengawas') }}" role="button">Pengawas</a>
+            <a class="btn btn-primary" href="{{ url('ppns') }}" role="button">PPNS</a>
         </div>
-
-        <br>
-                       
-        @if(!$pengawas->isEmpty())            
-            <div class="panel panel-primary">
-                <div class="panel-heading"> 
-                    <strong>Daftar Semua Pengawas</strong>
-                </div>
+        
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Statistik</div>
                 <div class="panel-body">
-                    Result: <strong>{{ $counter }}</strong> pengawas.</p>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr style="white-space:nowrap;">
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Provinsi</th>
-                                <th>NIP</th>
-                                <th>Unit</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php $count = $pengawas->firstItem() ?>
-                            @foreach($pengawas as $data)
-                            <tr>
-                                <td>{{ $count++ }}</td>
-                                <td><a href="{{ url('pengawas') }}/{{ $data->id }}">{{ $data->name }}</a></td>
-                                <td><a href="{{ url('provinsi') }}/{{ $data->province->id }}">{{ $data->province->name }}</a></td>
-                                <td>{{ $data->nip }}</td>
-                                <td>{{ $data->unit }}</td>
-                                <td>
-                                    <a href="{{ url('pengawas') }}/{{ $data->id }}" class="btn btn-xs btn-info"><i class="fa fa-info-circle "></i></a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+                    <table>
+                        <tr>
+                            <td>Jumlah User &nbsp;</td>
+                            <td>:</td>
+                            <td>&nbsp; {{ $jumlahuser }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Pengawas &nbsp;</td>
+                            <td>:</td>
+                            <td>&nbsp; {{ $jumlahpengawas }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah PPNS &nbsp;</td>
+                            <td>:</td>
+                            <td>&nbsp; {{ $jumlahppns }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Provinsi &nbsp;</td>
+                            <td>:</td>
+                            <td>&nbsp; {{ $jumlahprovinsi }}</td>
+                        </tr>
                     </table>
                 </div>
-
-                <div class="panel-footer">
-                    <div class="text-center">
-                        <small>{{ $pengawas->links() }}</small>
-                    </div>
-                </div>
-        </div>
-        @else
-            <div class="alert alert-warning" role="alert">
-                <strong>Error!</strong> Pengawas tidak ditemukan.
             </div>
-        @endif
+            
+        </div>
+
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Provinsi</div>
+                <div class="panel-body">
+                    <form action="{{ url()->current() }}" method="get">
+                        Sort: &nbsp;
+                        <button class="btn btn-xs" name="sort" value="asc">A-Z</button>
+                        <button class="btn btn-xs" name="sort" value="desc">Z-A</button>
+                    </form>
+                </div>
+                <table class="table table-bordered">
+                    <tr>
+                    <th class="col-xs-10">Provinsi</th>
+                    <th>Jumlah Pengawas</th>
+                </tr>
+                @foreach ($provinces as $province)
+                    <tr>
+                        <td><a href="{{ url('/provinsi') }}/{{ $province->id }}">{{ $province->name }}</a></td>
+                        <td>{{ $province->pengawas->count() }}</td>
+                    </tr>
+                @endforeach
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            {{ $provinces->links() }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
     @endif
 @endsection

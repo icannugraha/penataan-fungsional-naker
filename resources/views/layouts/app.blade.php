@@ -12,12 +12,12 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <!-- <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
     <!-- <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css"> -->
     <link rel="stylesheet" href="../../../styles/styles.css">
 
@@ -28,7 +28,7 @@
     
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Noto Sans', sans-serif;
         }
 
         .fa-btn {
@@ -58,9 +58,12 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/about') }}">About</a></li>
                     @if (Auth::guest())
                     @else
+                        @if (Auth::user())
+                            <li><a href="{{ url('/pengawas') }}">Pengawas</a></li>
+                            <li><a href="{{ url('/ppns') }}">PPNS</a></li>
+                        @endif
                         @if (Auth::user()->is_admin)
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -71,10 +74,12 @@
                                 <li><a href="{{ url('admin/user') }}">Users</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('admin/pengawas') }}">Pengawas</a></li>
+                                <li><a href="{{ url('admin/ppns') }}">PPNS</a></li>
                             </ul>
                         </li>
                         @endif
                     @endif
+                    <li><a href="{{ url('/about') }}">About</a></li>
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">
@@ -101,8 +106,7 @@
         </div>
     </nav>
     
-    <div class="container col-md-8 col-md-offset-2">
-        @include('notice2')
+    <div class="container">
         @yield('content')
     </div>
     

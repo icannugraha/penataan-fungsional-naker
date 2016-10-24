@@ -18,7 +18,7 @@
     @else
 
     <h2><strong>Edit Pengawas</strong></h2>
-    <hr>
+    <br>
     <div class="panel panel-primary">
         <div class="panel-heading">
             Edit Pengawas - <em>{{ $pengawas->name }}</em> 

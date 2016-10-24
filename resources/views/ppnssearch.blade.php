@@ -16,6 +16,7 @@
     @if (Auth::guest())
         @include('auth.layouts.login')
     @else
+    <div class="col-md-8 col-md-offset-2">
         @if(Session::has('message'))
         <div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -33,7 +34,7 @@
                 <ul class="dropdown-menu dualcolumns" style="left:15px">
                     @if(!$provinces->isEmpty())
                         @foreach($provinces as $province)
-                            <li><a href="{{ url('/provinsi') }}/{{ $province->id }}">{{ $province->name }}</a></li>
+                            <li><a href="{{ url('ppnsprovinsi') }}/{{ $province->id }}">{{ $province->name }}</a></li>
                         @endforeach
                     @else
                         <li>Tidak ada provinsi.</li>
@@ -41,11 +42,11 @@
                 </ul>
             </div>
 
-            <form method="get" class="form-horizontal col-md-9 top-buffer" action="{{ url('search') }}">
+            <form method="get" class="form-horizontal col-md-9 top-buffer" action="{{ url('ppnssearch') }}">
                 <div id="custom-search-input">
                     <div id="custom-search-input">
                         <div class="input-group">
-                            <input type="text" class="search-query form-control" name="s" id="s" placeholder="Cari nama pengawas..." />
+                            <input type="text" class="search-query form-control" name="s" id="s" placeholder="Cari nama PPNS..." />
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="submit">
                                     <span class=" glyphicon glyphicon-search"></span>
@@ -59,40 +60,32 @@
         
         <br>
             
-        @if(!$pengawas->isEmpty())  
-            <?php $count = $pengawas->firstItem() ?>
+        @if(!$ppns->isEmpty())  
+            <?php $count = $ppns->firstItem() ?>
             <div class="panel panel-primary">
                 <div class="panel-heading"> 
-                    Mencari Pengawas -  <em>"{{ $search }}"</em>
+                    Mencari PPNS -  <em>"{{ $search }}"</em>
                 </div>
                 <div class="panel-body">
-                    Result: <strong>{{ $counter }}</strong> pengawas.
+                    Result: <strong>{{ $counter }}</strong> PPNS
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr style="white-space:nowrap;">
-                                <th>No</th>
-                                <th class="col-xs-4">Nama</th>
-                                <th class="col-xs-3">Provinsi</th>
-                                <th class="col-xs-2">NIP</th>
-                                <th class="col-xs-3">Unit</th>
-                                <th>Detail</th>
+                                <th class="col-xs-1">No</th>
+                                <th class="col-xs-4">Provinsi</th>
+                                <th class="col-xs-7">Nama</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <?php $count = $pengawas->firstItem() ?>
-                            @foreach($pengawas as $data)
+                            <?php $count = $ppns->firstItem() ?>
+                            @foreach($ppns as $data)
                             <tr>
                                 <td>{{ $count++ }}</td>
-                                <td><a href="{{ url('pengawas') }}/{{ $data->id }}">{{ $data->name }}</a></td>
-                                <td><a href="{{ url('provinsi') }}/{{ $data->province->id }}">{{ $data->province->name }}</a></td>
-                                <td>{{ $data->nip }}</td>
-                                <td>{{ $data->unit }}</td>
-                                <td>
-                                    <a href="{{ url('pengawas') }}/{{ $data->id }}" class="btn btn-xs btn-info"><i class="fa fa-info-circle "></i></a>
-                                </td>
+                                <td><a href="{{ url('ppnsprovinsi') }}/{{ $data->province->id }}">{{ $data->province->name }}</a></td>
+                                <td><a href="{{ url('ppns') }}/{{ $data->id }}">{{ $data->name }}</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -101,16 +94,17 @@
 
                 <div class="panel-footer">
                     <div class="text-center">
-                        <small>{{ $pengawas->links() }}</small>
+                        <small>{{ $ppns->links() }}</small>
                     </div>
                 </div>
             </div>
         @else
             <div class="panel panel-warning" id="notice">
                 <div class="panel-body">
-                    <strong>Pengawas tidak ditemukan.</strong>
+                    <strong>PPNS tidak ditemukan.</strong>
                 </div>
             </div>
-        @endif  
+        @endif
+    </div>
     @endif
 @endsection

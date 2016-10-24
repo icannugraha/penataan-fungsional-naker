@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Edit {{ $user->username }} - Penataan Fungsional Pengawas Ketenagakerjaan
+@endsection
+
 @section('content')
     @if (session('notice'))
         @include(session('notice'))
@@ -11,7 +15,7 @@
 
     <div class="col-md-6 col-md-offset-3">
         <h2><strong>Edit User</strong></h2>
-        <hr>
+        <br>
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Edit User - <em>{{ $user->name }}</em> 

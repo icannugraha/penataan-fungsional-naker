@@ -54,16 +54,7 @@
                     <div class="panel-heading">
                         <strong>Detail Data Pengawas - <em>{{ $pengawas->name }}</em></strong>
                     </div>
-                    @if (Auth::user()->is_admin)
-                        <div class="panel-footer text-right">
-                            <form action="/admin/pengawas/{{ $pengawas->id }}" method="post" id="deleteform">
-                            {{ csrf_field() }}
-                                <input type="hidden" name="_method" value="DELETE">
-                            </form>
-                            <a href="/admin/pengawas/{{ $pengawas->id }}/edit" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                            <button class="btn btn-danger" id="delete"<i class="fa fa-trash-o"></i> Delete</button>
-                        </div>
-                    @endif
+
                     <div class="panel-body">
                         <dl class="dl-horizontal">
                             <dt>Provinsi :</dt>

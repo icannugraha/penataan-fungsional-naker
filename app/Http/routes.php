@@ -17,11 +17,6 @@ use Carbon\Carbon;
 Route::get('login', 'Auth\AuthController@showLoginForm');
 Route::post('login', 'Auth\AuthController@login');
 
-Route::get('api/pengawas/', function () {
-	$pengawas = App\Pengawas::all();
-	return $pengawas;
-});
-
 Route::get('about', function () {
 	return view('about');
 });
@@ -37,11 +32,23 @@ Route::group(['middleware' => ['auth']], function () {
 	// Menampilkan daftar pengawas berdasarkan provinsi yang dipilih.
 	Route::get('provinsi/{id}', 'ProvinsiController@index');
 
+	// Menampilkan daftar PPNS berdasarkan provinsi yang dipilih.
+	Route::get('ppnsprovinsi/{id}', 'PpnsProvinsiController@index');
+
+	//Menampilkan semua pengawas
+	Route::get('pengawas', 'PengawasController@index');
+
+	// PPNS Resource
+	Route::resource('ppns', 'PpnsController');
+
 	// Menampilkan daftar pengawas berdasarkan pengawas yang dipilih.
-	Route::get('pengawas/{id}', 'PengawasController@index');
+	Route::get('pengawas/{id}', 'PengawasController@show');
 
 	// Menampilkan data pengawas yang dicari
 	Route::get('search', 'SearchController@index');
+
+	// Menampilkan data PPNS yang dicari
+	Route::get('ppnssearch', 'PpnsSearchController@index');
 
 });
 
@@ -55,15 +62,22 @@ Route::group(['middlewareGroups' => ['admin']], function () {
 	// Manage Pengawas (CRUD)
 	Route::resource('admin/pengawas', 'AdminPengawasController');
 
+	// Manage PPNS (CRUD)
+	Route::resource('admin/ppns', 'AdminPpnsController');
+
 	Route::get('kosong', function () {
-		$query = DB::table('pengawas')
-			->where('golongan', '')
-			->update(['golongan' => "-"]);
+		$query = "un-comment code below to replace data in the database for spesific column and data. ↓↓↓";
+
+		/*$query = DB::table('ppns')
+			->where('updated_at', NULL)
+			->update(['updated_at' => Carbon::now()]);*/
 
     	return $query;
 	});
 
-		
+	Route::get('now', function() {
+		return Carbon::now();
+	});	
 });
 
 
