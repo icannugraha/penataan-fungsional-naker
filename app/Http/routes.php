@@ -68,8 +68,8 @@ Route::group(['middlewareGroups' => ['admin']], function () {
 	Route::get('kosong', function () {
 		$query = "un-comment code below to replace data in the database for spesific column and data. ↓↓↓";
 
-		/*$query = DB::table('ppns')
-			->where('updated_at', NULL)
+		/*$query = DB::table('pengawas')
+			->where('updated_at', '0000-00-00 00:00:00')
 			->update(['updated_at' => Carbon::now()]);*/
 
     	return $query;

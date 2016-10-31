@@ -65,15 +65,17 @@
                     <tr>
                     <th class="col-xs-10">Provinsi</th>
                     <th>Jumlah Pengawas</th>
+		    <th>Jumlah PPNS</th>
                 </tr>
                 @foreach ($provinces as $province)
                     <tr>
                         <td><a href="{{ url('/provinsi') }}/{{ $province->id }}">{{ $province->name }}</a></td>
                         <td>{{ $province->pengawas->count() }}</td>
+			<td>{{ $province->ppns->count() }}</td>
                     </tr>
                 @endforeach
                     <tr>
-                        <td colspan="2" class="text-center">
+                        <td colspan="3" class="text-center">
                             {{ $provinces->links() }}
                         </td>
                     </tr>

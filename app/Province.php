@@ -10,4 +10,9 @@ class Province extends Model
     {
     	return $this->hasMany('App\Pengawas');
     }
+
+    public function ppns()
+    {
+    	return $this->hasMany('App\Ppns');
+    }
 }

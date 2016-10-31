@@ -124,24 +124,6 @@
                                     <dt>Unit :</dt>
                                     <dd>{{ $pengawas->unit }}</dd>
                                 </dl>
-                                @if (Auth::user()->is_admin)
-                                <dl class="dl-horizontal">
-                                    <dt>Gaji :</dt>
-                                    <dd>
-                                        <?php
-                                            $amount = $pengawas->gaji;
-
-                                            if($amount === '-'){
-                                                echo $amount;
-                                            } else {
-                                                setlocale(LC_ALL, 'IND'); 
-                                                $locale = localeconv();
-                                                echo $locale['currency_symbol'] . " ", number_format($amount, 2, $locale['decimal_point'], $locale['thousands_sep']);
-                                            }    
-                                        ?>
-                                    </dd>
-                                </dl>
-                                @endif
                                 
                             </div>
                         </div>
