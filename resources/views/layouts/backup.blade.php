@@ -9,32 +9,21 @@
     <title>@yield('title')</title>
     
     <link rel="shortcut icon" type="image/x-icon" href="http://kemnaker.go.id/img/favicon.png" />
-
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-
     <!-- <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css"> -->
     <link rel="stylesheet" href="../../../styles/styles.css">
-    
-    <!-- Sweetalert Javascript -->
+
     <script src="../../../dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../dist/sweetalert.css">
 
-    <!-- Important Owl stylesheet -->
-    <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
-    
-    <!-- Default Owl Theme -->
-    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
-    
-    <!-- Elixir -->
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
     
     <style>
@@ -45,10 +34,7 @@
         .fa-btn {
             margin-right: 6px;
         }
-
-        @yield('css')
     </style>
-
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -134,10 +120,6 @@
     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    
-    <!-- Include js plugin -->
-    <script src="assets/owl-carousel/owl.carousel.js"></script>
-
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     
     <script>
@@ -155,10 +137,7 @@
                 $("#deleteform").submit();
             });
         })
-
-        @yield('js')
     </script>
 
 </body>
 </html>
-
