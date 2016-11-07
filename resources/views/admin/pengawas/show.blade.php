@@ -50,7 +50,7 @@
                         <dl class="dl-horizontal">
                             <dt>Jenis Kelamin :</dt>
                             <dd>
-                            @if($pengawas->gender = 'L')
+                            @if($pengawas->gender == 'L')
                                 Laki-laki
                             @else
                                 Perempuan

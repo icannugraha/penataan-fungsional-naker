@@ -74,9 +74,9 @@
 
                     <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                         <label for="gender" class="control-label">Jenis Kelamin:</label>
-                        <select class="form-control" name="gender" id="role">
+                        <select class="form-control" name="gender" id="gender">
                             <option value="L">Laki-laki</option>
-                            <option value="P">Peempuan</option>
+                            <option value="P">Perempuan</option>
                         </select>
                         @if ($errors->has('gender'))
                             <span class="help-block">
